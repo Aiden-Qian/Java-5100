@@ -1,9 +1,11 @@
+import java.util.*;
+
 /**
  * The deadline of this assignment is 09/25/2020 23:59 PST.
  * Please feel free to contact Yafei and Yaqi for any questions.
  */
 
-class Employee {
+class Employee implements Comparable<Employee> {
     String name;
     int age;
     Gender gender;
@@ -12,16 +14,31 @@ class Employee {
     // Constructor. Please set all the data in constructor.
     public Employee(String name, int age, Gender gender, double salary) {
         //write your code here
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+        this.salary=salary;
     }
 
     // Getter for `name`. Return the current `name` data
     public String getName() {
         //write your code here
+        return this.name;
     }
 
     // Setter for `name`. Set `name` data
     public void setName(String name) {
         //write your code here
+        this.name=name;
+    }
+
+    public void raiseSalary(double byPercent){
+        this.salary=salary*byPercent;
+    };
+
+    @Override
+    public int compareTo(Employee o) {
+        return Double.compare(this.salary,o.salary);
     }
 }
 
@@ -38,8 +55,12 @@ public class EmployeeSalaryCalculate {
      * If the salary is less than or equal to 8900, the Social Security Tax is 6.2% of the salary.
      * If the salary is more than 8900, the Social Security Tax is 6.2% of 106,800.
      */
-    public double socialSecurityTax(Employee employee) {
+    public static double socialSecurityTax(Employee employee) {
         //write your code here
+        double tax;
+        if(employee.salary<=8900) tax=employee.salary*0.062;
+        else tax=106800*0.062;
+        return tax;
     }
 
     /**
@@ -48,8 +69,14 @@ public class EmployeeSalaryCalculate {
      * If the employee is under 35, rate is 3% of salary; if the employee is between 35 and 50(inclusive), rate is 4% of salary;
      * If the employee is between 50 and 60(exclusive), rate is 5% of salary; If the employee is above 60, rate is 6% of salary.
      */
-    public double insuranceCoverage(Employee employee) {
+    public static double insuranceCoverage(Employee employee) {
         //write your code here
+        double insurance=0;
+        if(employee.age<35) insurance=employee.salary*0.03;
+        else if(35<=employee.age && employee.age <=50) insurance=employee.salary*0.04;
+        else if(50<employee.age && employee.age<60) insurance=employee.salary*0.06;
+        else return 0;
+        return insurance;
     }
 
     /**
@@ -57,8 +84,16 @@ public class EmployeeSalaryCalculate {
      * For example, Alice's salary is 1000, John's salary is 500, Jenny's salary is 1200, you should print:
      * John Alice Jenny
      */
-    public void sortSalary(Employee e1, Employee e2, Employee e3) {
+    public static void sortSalary(Employee e1, Employee e2, Employee e3) {
         //write your code here
+        List<Employee> employee= new ArrayList<>(Arrays.asList(e1,e2,e3));
+
+        employee.sort(null);
+
+        for(Employee people:employee){
+            System.out.print(people.name+" ");
+        }
+        System.out.println();
     }
 
     /**
@@ -67,8 +102,10 @@ public class EmployeeSalaryCalculate {
      * Do not change the input of this method.
      * Try to add a new method in Employee class: public void raiseSalary(double byPercent)
      */
-    public void tripleSalary(Employee employee) {
+    public static void tripleSalary(Employee employee) {
         //write your code here
+        employee.raiseSalary(3);
+        System.out.println(employee.salary);
     }
 
     //Extra credit
@@ -85,6 +122,10 @@ public class EmployeeSalaryCalculate {
      */
     /*
      write your understanding here.
+     the addresses of Employee x and y in the method are changed, but the addresses of  not change on outside.
+     swap method only change the addresses of x and y which are the formal parameters of the methond.
+     swap(Employee x, Employee y)-> formal parameters.
+     swap(a,b)->actual parameters.
     */
     public static void main(String[] args) {
         Employee a = new Employee("Jenny", 20, Gender.FEMALE, 2000);
@@ -94,6 +135,14 @@ public class EmployeeSalaryCalculate {
         swap(a, b);
         System.out.println("After: a=" + a.getName());
         System.out.println("After: b=" + b.getName());
+
+        Employee Alice=new Employee("Alice",23,Gender.FEMALE, 1000);
+        Employee Jhon=new Employee("Jhon",44,Gender.MALE,500);
+        Employee Jenny=new Employee("Jenny",55,Gender.MALE,1200);
+        System.out.println(socialSecurityTax(Alice));
+        System.out.println(insuranceCoverage(Jhon));
+        sortSalary(Alice, Jhon, Jenny);
+        tripleSalary(Alice);
     }
 
     public static void swap(Employee x, Employee y) {
