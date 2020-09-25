@@ -122,7 +122,7 @@ public class EmployeeSalaryCalculate {
      */
     /*
      write your understanding here.
-     the addresses of Employee x and y in the method are changed, but the addresses of  not change on outside.
+     the value of Employee x and y in the method are changed, but the addresses not change outside method.
      swap method only change the addresses of x and y which are the formal parameters of the methond.
      swap(Employee x, Employee y)-> formal parameters.
      swap(a,b)->actual parameters.
