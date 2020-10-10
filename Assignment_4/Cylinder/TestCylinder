@@ -1,0 +1,29 @@
+public class TestCylinder {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] arr= {3,2,3,1,2,4,5,5,6};
+		int k=4;
+		System.out.println(Kth.findKthLargest(arr,k));
+		
+		
+		Circle c=new Circle();
+		c.setRadius(2.0);
+		c.setColor("yellow");
+		System.out.println(c.getArea()+"m^2");
+		
+		Cylinder cy=new Cylinder();
+		cy.setRadius(1.0);
+		cy.setHeight(1.0);
+		cy.setColor("red");
+		System.out.println(cy.getVolume()+"m^3");
+		System.out.println(cy.getArea()+"m^2");
+		
+		Cylinder cy_a=new Cylinder(5.0,2.0);
+		cy_a.setColor("red");
+		System.out.println(cy_a.getVolume()+"m^3");
+		System.out.println(cy_a.getArea()+"m^2");
+
+	}
+
+}
