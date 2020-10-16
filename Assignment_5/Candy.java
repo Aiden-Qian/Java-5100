@@ -1,4 +1,3 @@
-package Assignment5;
 
 public class Candy extends DessertItem{
 	
