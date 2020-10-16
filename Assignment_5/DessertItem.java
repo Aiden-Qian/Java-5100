@@ -1,4 +1,3 @@
-package Assignment5;
 
 public abstract class DessertItem {
 	protected String name;
