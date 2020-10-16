@@ -1,4 +1,3 @@
-package Assignment5;
 
 public class Sundae extends IceCream{
 	private int topping;
