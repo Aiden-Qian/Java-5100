@@ -1,4 +1,3 @@
-package Assignment5;
 
 public class DessertShoppe {
 	private double rate=0.065;
