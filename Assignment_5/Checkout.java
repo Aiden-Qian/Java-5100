@@ -1,4 +1,3 @@
-package Assignment5;
 
 import java.util.Vector;
 import java.util.stream.Collectors;
