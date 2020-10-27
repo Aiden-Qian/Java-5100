@@ -1,5 +1,3 @@
-package Assignment6;
-
 public class Cat extends Pet implements Boardable{
 	
 	private String hairLength;
